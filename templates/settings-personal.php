@@ -20,8 +20,6 @@ script('rcconnect', 'settings-personal');
                 <label for="username"><?php p($l->t('Username')); ?>: </label>
             </div>
             <div>
-                <input type="hidden" id="hidden_data" name="hidden_data"
-                       autocapitalize="none" autocorrect="off" />
                 <input type="text" id="username" name="username"
                        placeholder="<?php p($l->t('Username'));?>"
                        autocapitalize="none" autocorrect="off" />

@@ -137,24 +137,23 @@ class RcMapper extends QBMapper {
             // 結果の配列を取得
             $data_arr = $cursor->fetch();
 
-            // データ数が1なら削除する
-            if ((int)$data_arr["count"] === 1) {
-                $qb->delete('rcconnect');
-                $qb->where($qb->expr()->eq('uid', $qb->createNamedParameter($uid, IQueryBuilder::PARAM_STR)));
-                $qb->setParameter(':id', $qb->createNamedParameter($data_arr["id"], IQueryBuilder::PARAM_INT));
-                $qb->execute();
-
-            } elseif ((int)$data_arr["count"] === 0) {
+            // データ数が0なら何もせず返す
+            if ((int)$data_arr["count"] === 0) {
                 $cursor->closeCursor();
                 $this->db->commit();
                 return true;
             } else {
-                // データ数が0でも1でもないならエラーにする
-                $cursor->closeCursor();
-                $msg = $this->buildDebugMessage(
-                    'Multiple results found at run time', $qb
-                );
-                throw new MultipleObjectsReturnedException($msg);
+
+                // データ数が0でないなら削除する(データが複数ある場合も削除)
+                $qb->delete('rcconnect');
+                $qb->where($qb->expr()->eq('uid', $qb->createNamedParameter($uid, IQueryBuilder::PARAM_STR)));
+                $qb->setParameter(':id', $qb->createNamedParameter($data_arr["id"], IQueryBuilder::PARAM_INT));
+                $qb->execute();
+                //$cursor->closeCursor();
+                //$msg = $this->buildDebugMessage(
+                //    'Multiple results found at run time', $qb
+                //);
+                //throw new MultipleObjectsReturnedException($msg);
             }
 
             // commitを行う

@@ -12,7 +12,6 @@ window.addEventListener('DOMContentLoaded', function () {
 	}).done(function (data) {
 	    // handle success
             $('#username').val(data.username);
-            $('#hidden_data').val(data.username);
 	}).fail(function (data, code) {
 	    // handle failure
             OC.msg.finishedSaving('#error-msg',
@@ -57,7 +56,6 @@ window.addEventListener('DOMContentLoaded', function () {
         }).done(function (response) {
             // handle success
             $('#password').val('');
-            $('#hidden_data').val($('#username').val());
             OC.msg.finishedSaving('#error-msg',
                 {
                     'status' : 'success',
@@ -86,47 +84,14 @@ window.addEventListener('DOMContentLoaded', function () {
     $('#delete').click(function () {
         var baseUrl = OC.generateUrl('/apps/rcconnect');
 
-        // そもそもデータにユーザ情報が登録されていない場合
-        if ($('#hidden_data').val() === '') {
-		$('#username').val('');
-		$('#password').val('');
-            OC.msg.finishedSaving('#error-msg',
-                {
-                    'status' : 'success',
-                    'data' : {
-                        'message' : t('rcconnect', 'No user to delete.')
-                    }
-                }
-            );
-            return false;
-        }
-
-        if ($('#username').val() !== '') {
-            var del = {
-                username: $('#username').val(),
-                password: $('#password').val()
-            };
-        } else {
-            OC.msg.finishedSaving('#error-msg',
-                {
-                    'status' : 'error',
-                    'data' : {
-                        'message' : t('rcconnect', 'Enter deleteing user')
-                    }
-                }
-            );
-            return false;
-        }
-
         if (window.confirm(t('rcconnect', 'Delete user?'))) {
 	    $.ajax({
 		url: baseUrl + '/rc',
 		type: 'DELETE',
 		contentType: 'application/json',
-		data: JSON.stringify(del)
+		data: JSON.stringify()
 	    }).done(function (response) {
 		// handle success
-		$('#hidden_data').val('');
 		$('#username').val('');
 		$('#password').val('');
 		OC.msg.finishedSaving('#error-msg',

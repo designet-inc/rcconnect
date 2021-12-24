@@ -57,7 +57,7 @@ class RcController extends Controller {
      * @NoAdminRequired
      * @NoCSRFRequired
      */
-    public function destroy($uid): DataResponse {
+    public function destroy(): DataResponse {
         $user = $this->userSession->getUser();                
         $uid = $user->getUID();
 
