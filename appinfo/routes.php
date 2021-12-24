@@ -22,8 +22,15 @@
  */
 
 return [
+/*
+    'resources' => [
+        'rc' => ['url' => '/rc']
+    ],
+*/
 	'routes' => [
 		['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
-		['name' => 'page#mail', 'url' => '/mail', 'verb' => 'GET'],
+		['name' => 'rc#index', 'url' => '/rc', 'verb' => 'GET'],
+		['name' => 'rc#update', 'url' => '/rc', 'verb' => 'PUT'],
+		['name' => 'rc#destroy', 'url' => '/rc', 'verb' => 'DELETE']
 	]
 ];
