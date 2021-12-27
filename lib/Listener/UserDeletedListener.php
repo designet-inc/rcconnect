@@ -32,17 +32,15 @@ class UserDeletedListener implements IEventListener {
 		}
 
 		$user = $event->getUser();
-		foreach ($this->rcService->getUserInfo($user->getUID()) as $account) {
-			try {
-				$this->rcService->delete(
-					$user->getUID()
-				);
-			} catch (Exception $e) {
-				$this->logger->logException($e, [
-					'message' => 'Could not delete user: ' . $e->getMessage(),
-					'level' => ILogger::ERROR,
-				]);
-			}
+		try {
+			$this->rcService->delete(
+				$user->getUID()
+			);
+		} catch (Exception $e) {
+			$this->logger->logException($e, [
+				'message' => 'Could not delete user: ' . $e->getMessage(),
+				'level' => ILogger::ERROR,
+			]);
 		}
 	}
 }

@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 {
                     'status' : 'error',
                     'data' : {
-                        'message' : t('rcconnect', 'Unable to setting user')
+                        'message' : t('rcconnect', 'No User/Password.')
                     }
                 }
             );
@@ -60,7 +60,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 {
                     'status' : 'success',
                     'data' : {
-                        'message' : t('rcconnect', 'Save')
+                        'message' : t('rcconnect', 'Save.')
                     }
                 }
             );
@@ -84,7 +84,7 @@ window.addEventListener('DOMContentLoaded', function () {
     $('#delete').click(function () {
         var baseUrl = OC.generateUrl('/apps/rcconnect');
 
-        if (window.confirm(t('rcconnect', 'Delete user?'))) {
+        if (window.confirm(t('rcconnect', 'Delete user infomation?'))) {
 	    $.ajax({
 		url: baseUrl + '/rc',
 		type: 'DELETE',
@@ -98,7 +98,7 @@ window.addEventListener('DOMContentLoaded', function () {
 		    {
 			'status' : 'success',
 			'data' : {
-			    'message' : t('rcconnect', 'Deleted user.')
+			    'message' : t('rcconnect', 'Deleted user infomation.')
 			}
 		    }
 		);
