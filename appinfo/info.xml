@@ -5,7 +5,7 @@
     <name>RcConnect</name>
     <summary>RcConnect</summary>
     <description><![CDATA[RcConnect]]></description>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <licence>agpl</licence>
     <author mail="ohno@designet.co.jp" >Kimiyoshi Ohno</author>
     <namespace>RcConnect</namespace>
@@ -21,8 +21,6 @@
         </navigation>
     </navigations>
     <settings>
-        <admin>OCA\RcConnect\Settings\Admin</admin>
-        <admin-section>OCA\RcConnect\Settings\Section</admin-section>
         <personal>OCA\RcConnect\Settings\Personal</personal>
         <personal-section>OCA\RcConnect\Settings\Section</personal-section>
     </settings>
