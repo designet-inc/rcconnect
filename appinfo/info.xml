@@ -5,9 +5,9 @@
     <name>RcConnect</name>
     <summary>RcConnect</summary>
     <description><![CDATA[RcConnect]]></description>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <licence>agpl</licence>
-    <author mail="ohno@designet.co.jp" >Kimiyoshi Ohno</author>
+    <author mail="ohno@designet.co.jp" >DesigNET</author>
     <namespace>RcConnect</namespace>
     <category>tools</category>
     <bugs></bugs>

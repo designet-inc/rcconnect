@@ -22,6 +22,12 @@ $(document).ready(function () {
 
 $(window).load(function () {
     let loginForm = ifm.contentDocument.getElementById('login-form');
+    if (loginForm == null || loginForm._user == undefined) {
+        loginForm = ifm.contentDocument.form;
+        if (loginForm == undefined || loginForm._user == undefined) {
+        return;
+        }
+    }
     var baseUrl = OC.generateUrl('/apps/rcconnect');
 
     $.ajax({
